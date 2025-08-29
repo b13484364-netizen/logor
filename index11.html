@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 استوديو الشعارات الاحترافي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&family=Pacifico&family=Tajawal:wght@300;400;500;700;900&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Lalezar&family=Markazi+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1',
+                        'secondary': '#8b5cf6',
+                        'accent': '#f59e0b',
+                        'dark': '#0f0f0f',
+                        'card': '#1a1a1a',
+                        'border': '#333333'
+                    },
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                        'amiri': ['Amiri', 'serif'],
+                        'pacifico': ['Pacifico', 'cursive'],
+                        'tajawal': ['Tajawal', 'sans-serif'],
+                        'scheherazade': ['Scheherazade New', 'serif'],
+                        'reem': ['Reem Kufi', 'sans-serif'],
+                        'lalezar': ['Lalezar', 'cursive'],
+                        'markazi': ['Markazi Text', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #f59e0b);
+            padding: 2px;
+            border-radius: 12px;
+        }
+        
+        .gradient-border > div {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        
+        .canvas-container {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .control-group {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .control-group:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .template-card {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .template-card:hover {
+            border-color: #6366f1;
+            transform: scale(1.05);
+        }
+        
+        .template-card.active {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #f59e0b20, #6366f120);
+        }
+        
+        .color-preset {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .color-preset:hover {
+            border-color: white;
+            transform: scale(1.1);
+        }
+        
+        .gradient-preview {
+            width: 100%;
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .gradient-preview:hover {
+            border-color: #6366f1;
+            transform: scale(1.02);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 2s infinite;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    
+    <!-- Header -->
+    <header class="glass-effect py-6 mb-8">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-reverse space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-palette text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                            🎨 استوديو الشعارات الاحترافي
+                        </h1>
+                        <p class="text-gray-400 text-sm">صمم شعارك بلمسة احترافية</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-reverse space-x-4">
+                    <button onclick="saveProject()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-save mr-2"></i>حفظ المشروع
+                    </button>
+                    <button onclick="loadProject()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-folder-open mr-2"></i>فتح مشروع
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-4 gap-8">
+            
+            <!-- Left Panel - Controls -->
+            <div class="lg:col-span-1 space-y-6 custom-scrollbar" style="max-height: 80vh; overflow-y: auto;">
+                
+                <!-- Templates -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-star text-accent mr-2"></i>قوالب جاهزة
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="template-card p-3 rounded-lg text-center" onclick="applyTemplate('modern')">
+                            <i class="fas fa-rocket text-2xl text-primary mb-2"></i>
+                            <p class="text-sm">عصري</p>
+                        </div>
+                        <div class="template-card p-3 rounded-lg text-center" onclick="applyTemplate('classic')">
+                            <i class="fas fa-crown text-2xl text-accent mb-2"></i>
+                            <p class="text-sm">كلاسيكي</p>
+                        </div>
+                        <div class="template-card p-3 rounded-lg text-center" onclick="applyTemplate('minimal')">
+                            <i class="fas fa-circle text-2xl text-gray-400 mb-2"></i>
+                            <p class="text-sm">بسيط</p>
+                        </div>
+                        <div class="template-card p-3 rounded-lg text-center" onclick="applyTemplate('gradient')">
+                            <i class="fas fa-paint-brush text-2xl text-secondary mb-2"></i>
+                            <p class="text-sm">متدرج</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Settings -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-font text-accent mr-2"></i>إعدادات النص
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">نص الشعار</label>
+                            <input type="text" id="nameInput" value="شعار احترافي" 
+                                   class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-primary focus:outline-none transition-colors text-base"
+                                   oninput="drawLogo()" />
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">الخط</label>
+                            <select id="fontSelect" onchange="drawLogo()" 
+                                    class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-primary focus:outline-none text-base">
+                                <option value="Cairo" style="font-family: Cairo;">Cairo - القاهرة</option>
+                                <option value="Amiri" style="font-family: Amiri;">Amiri - أميري</option>
+                                <option value="Tajawal" style="font-family: Tajawal;">Tajawal - تجوال</option>
+                                <option value="Reem Kufi" style="font-family: 'Reem Kufi';">Reem Kufi - ريم كوفي</option>
+                                <option value="Scheherazade New" style="font-family: 'Scheherazade New';">Scheherazade - شهرزاد</option>
+                                <option value="Lalezar" style="font-family: Lalezar;">Lalezar - لاله زار</option>
+                                <option value="Markazi Text" style="font-family: 'Markazi Text';">Markazi - مركزي</option>
+                                <option value="Pacifico" style="font-family: Pacifico;">Pacifico</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">حجم الخط</label>
+                                <input type="range" id="fontSize" min="20" max="150" value="70" 
+                                       class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                <span id="fontSizeDisplay" class="text-xs text-gray-400">70px</span>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">سماكة الخط</label>
+                                <select id="fontWeight" onchange="drawLogo()" 
+                                        class="w-full px-2 py-1 bg-gray-800 border border-gray-600 rounded text-sm">
+                                    <option value="normal">عادي</option>
+                                    <option value="bold" selected>عريض</option>
+                                    <option value="900">سميك جداً</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colors -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-palette text-accent mr-2"></i>الألوان
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">نوع التلوين</label>
+                            <select id="colorType" onchange="toggleColorMode(); drawLogo()" 
+                                    class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-primary focus:outline-none text-base">
+                                <option value="solid">لون واحد</option>
+                                <option value="gradient">متدرج</option>
+                            </select>
+                        </div>
+
+                        <div id="solidColorSection">
+                            <label class="block text-sm font-medium mb-2">لون النص</label>
+                            <input type="color" id="textColor" value="#ffffff" 
+                                   class="w-full h-12 rounded-lg border border-gray-600 bg-transparent cursor-pointer"
+                                   onchange="drawLogo()" />
+                        </div>
+
+                        <div id="gradientColorSection" class="hidden">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">اللون الأول</label>
+                                    <input type="color" id="gradientColor1" value="#6366f1" 
+                                           class="w-full h-10 rounded border border-gray-600 bg-transparent cursor-pointer"
+                                           onchange="drawLogo()" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">اللون الثاني</label>
+                                    <input type="color" id="gradientColor2" value="#8b5cf6" 
+                                           class="w-full h-10 rounded border border-gray-600 bg-transparent cursor-pointer"
+                                           onchange="drawLogo()" />
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <label class="block text-sm font-medium mb-2">اتجاه التدرج</label>
+                                <input type="range" id="gradientAngle" min="0" max="360" value="45" 
+                                       class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                <span id="gradientAngleDisplay" class="text-xs text-gray-400">45°</span>
+                            </div>
+                        </div>
+
+                        <!-- Color Presets -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">ألوان جاهزة</label>
+                            <div class="flex flex-wrap gap-2">
+                                <div class="color-preset" style="background: #ffffff;" onclick="setColor('#ffffff')"></div>
+                                <div class="color-preset" style="background: #000000;" onclick="setColor('#000000')"></div>
+                                <div class="color-preset" style="background: #6366f1;" onclick="setColor('#6366f1')"></div>
+                                <div class="color-preset" style="background: #8b5cf6;" onclick="setColor('#8b5cf6')"></div>
+                                <div class="color-preset" style="background: #f59e0b;" onclick="setColor('#f59e0b')"></div>
+                                <div class="color-preset" style="background: #ef4444;" onclick="setColor('#ef4444')"></div>
+                                <div class="color-preset" style="background: #10b981;" onclick="setColor('#10b981')"></div>
+                                <div class="color-preset" style="background: #06b6d4;" onclick="setColor('#06b6d4')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Effects -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-magic text-accent mr-2"></i>التأثيرات
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">تأثير الظل</label>
+                            <input type="checkbox" id="enableShadow" checked onchange="drawLogo()" 
+                                   class="mr-2 accent-primary" />
+                            <span class="text-sm">تفعيل الظل</span>
+                        </div>
+
+                        <div id="shadowSettings">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">عمق الظل</label>
+                                    <input type="range" id="shadowDepth" min="0" max="20" value="8" 
+                                           class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                    <span id="shadowDepthDisplay" class="text-xs text-gray-400">8px</span>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">لون الظل</label>
+                                    <input type="color" id="shadowColor" value="#000000" 
+                                           class="w-full h-8 rounded border border-gray-600 bg-transparent cursor-pointer"
+                                           onchange="drawLogo()" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">تأثير الحدود</label>
+                            <input type="checkbox" id="enableStroke" onchange="drawLogo()" 
+                                   class="mr-2 accent-primary" />
+                            <span class="text-sm">تفعيل الحدود</span>
+                        </div>
+
+                        <div id="strokeSettings" class="hidden">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">سماكة الحدود</label>
+                                    <input type="range" id="strokeWidth" min="1" max="15" value="3" 
+                                           class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                    <span id="strokeWidthDisplay" class="text-xs text-gray-400">3px</span>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">لون الحدود</label>
+                                    <input type="color" id="strokeColor" value="#000000" 
+                                           class="w-full h-8 rounded border border-gray-600 bg-transparent cursor-pointer"
+                                           onchange="drawLogo()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position & Transform -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-arrows-alt text-accent mr-2"></i>الموضع والتحويل
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">تحريك أفقي</label>
+                                <input type="range" id="moveX" min="-200" max="200" value="0" 
+                                       class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                <span id="moveXDisplay" class="text-xs text-gray-400">0px</span>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">تحريك عمودي</label>
+                                <input type="range" id="moveY" min="-100" max="100" value="0" 
+                                       class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                <span id="moveYDisplay" class="text-xs text-gray-400">0px</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">دوران</label>
+                                <input type="range" id="rotation" min="-180" max="180" value="0" 
+                                       class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                <span id="rotationDisplay" class="text-xs text-gray-400">0°</span>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">الشفافية</label>
+                                <input type="range" id="opacity" min="0.1" max="1" step="0.1" value="1" 
+                                       class="w-full accent-primary" oninput="updateDisplay(); drawLogo()" />
+                                <span id="opacityDisplay" class="text-xs text-gray-400">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Background -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-image text-accent mr-2"></i>الخلفية
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">نوع الخلفية</label>
+                            <select id="bgType" onchange="toggleBgMode(); drawLogo()" 
+                                    class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-primary focus:outline-none text-base">
+                                <option value="color">لون واحد</option>
+                                <option value="gradient">متدرج</option>
+                                <option value="image">صورة</option>
+                                <option value="transparent">شفاف</option>
+                            </select>
+                        </div>
+
+                        <div id="bgColorSection">
+                            <label class="block text-sm font-medium mb-2">لون الخلفية</label>
+                            <input type="color" id="bgColor" value="#1a1a1a" 
+                                   class="w-full h-12 rounded-lg border border-gray-600 bg-transparent cursor-pointer"
+                                   onchange="drawLogo()" />
+                        </div>
+
+                        <div id="bgGradientSection" class="hidden">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">اللون الأول</label>
+                                    <input type="color" id="bgGradientColor1" value="#1a1a1a" 
+                                           class="w-full h-10 rounded border border-gray-600 bg-transparent cursor-pointer"
+                                           onchange="drawLogo()" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">اللون الثاني</label>
+                                    <input type="color" id="bgGradientColor2" value="#2a2a2a" 
+                                           class="w-full h-10 rounded border border-gray-600 bg-transparent cursor-pointer"
+                                           onchange="drawLogo()" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="bgImageSection" class="hidden">
+                            <label class="block text-sm font-medium mb-2">رفع صورة</label>
+                            <input type="file" id="bgImageInput" accept="image/*" 
+                                   class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-primary focus:outline-none text-base" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canvas Size -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-expand text-accent mr-2"></i>حجم اللوحة
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">المقاس المحدد مسبقاً</label>
+                            <select id="canvasPreset" onchange="setCanvasSize()" 
+                                    class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-primary focus:outline-none text-base">
+                                <option value="800x400">شعار عام (800x400)</option>
+                                <option value="1200x600">شعار كبير (1200x600)</option>
+                                <option value="500x500">مربع (500x500)</option>
+                                <option value="1920x1080">خلفية شاشة (1920x1080)</option>
+                                <option value="1200x630">فيسبوك (1200x630)</option>
+                                <option value="1024x512">تويتر (1024x512)</option>
+                                <option value="custom">مخصص</option>
+                            </select>
+                        </div>
+
+                        <div id="customSizeSection" class="hidden">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">العرض</label>
+                                    <input type="number" id="canvasWidth" value="800" min="100" max="2000" 
+                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded focus:border-primary focus:outline-none text-base"
+                                           onchange="updateCanvasSize()" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">الارتفاع</label>
+                                    <input type="number" id="canvasHeight" value="400" min="100" max="2000" 
+                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded focus:border-primary focus:outline-none text-base"
+                                           onchange="updateCanvasSize()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Panel - Canvas -->
+            <div class="lg:col-span-2">
+                <div class="canvas-container">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-paint-brush text-accent mr-2"></i>معاينة الشعار
+                        </h2>
+                        <div class="flex space-x-reverse space-x-3">
+                            <button onclick="resetAll()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                <i class="fas fa-undo mr-2"></i>إعادة تعيين
+                            </button>
+                            <button onclick="drawLogo()" class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                <i class="fas fa-sync mr-2"></i>تحديث
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <canvas id="logoCanvas" width="800" height="400" 
+                                class="border-2 border-gray-600 rounded-lg shadow-2xl max-w-full h-auto"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Export & Actions -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Export Options -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-download text-accent mr-2"></i>التصدير والحفظ
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="downloadCanvas('png')" 
+                                class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-file-image mr-2"></i>تحميل PNG
+                        </button>
+                        <button onclick="downloadCanvas('jpg')" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-file-image mr-2"></i>تحميل JPG
+                        </button>
+                        <button onclick="downloadCanvas('svg')" 
+                                class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-vector-square mr-2"></i>تحميل SVG
+                        </button>
+                        <button onclick="copyToClipboard()" 
+                                class="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-copy mr-2"></i>نسخ للحافظة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-bolt text-accent mr-2"></i>إجراءات سريعة
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="randomizeColors()" 
+                                class="w-full bg-pink-600 hover:bg-pink-700 text-white py-2 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-shuffle mr-2"></i>ألوان عشوائية
+                        </button>
+                        <button onclick="applyRandomFont()" 
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-font mr-2"></i>خط عشوائي
+                        </button>
+                        <button onclick="animatePreview()" 
+                                class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-play mr-2"></i>معاينة متحركة
+                        </button>
+                        <button onclick="generateQRCode()" 
+                                class="w-full bg-gray-600 hover:bg-gray-700 text-white py-2 rounded-lg transition-colors font-medium">
+                            <i class="fas fa-qrcode mr-2"></i>إنشاء QR Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Panel -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-info-circle text-accent mr-2"></i>معلومات المشروع
+                    </h3>
+                    <div class="space-y-2 text-sm text-gray-300">
+                        <div class="flex justify-between">
+                            <span>حجم اللوحة:</span>
+                            <span id="canvasInfo">800 × 400</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>الخط المستخدم:</span>
+                            <span id="fontInfo">Cairo</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>حجم الخط:</span>
+                            <span id="sizeInfo">70px</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>عدد الأحرف:</span>
+                            <span id="charCount">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips -->
+                <div class="control-group">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-lightbulb text-accent mr-2"></i>نصائح مفيدة
+                    </h3>
+                    <div class="space-y-2 text-sm text-gray-300" id="tips">
+                        <p>💡 استخدم الخطوط العربية للحصول على شعار أكثر أصالة</p>
+                        <p>🎨 جرب التدرجات اللونية لمظهر عصري</p>
+                        <p>✨ أضف ظلال خفيفة لإعطاء عمق للنص</p>
+                        <p>📱 تأكد من وضوح الشعار في الأحجام المختلفة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 py-8 glass-effect">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-reverse space-x-4 mb-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
+                    <i class="fas fa-palette text-white text-sm"></i>
+                </div>
+                <p class="text-lg font-bold">تم التطوير بواسطة <span class="text-accent">م: رأفت عمر</span> 🎨</p>
+            </div>
+            <p class="text-gray-400 text-sm">استوديو الشعارات الاحترافي - اصنع شعارك بلمسة فنية مميزة</p>
+        </div>
+    </footer>
+
+    <input type="file" id="projectFileInput" accept=".json" style="display: none;" onchange="handleProjectLoad()" />
+
+    <script>
+        let bgImage = null;
+        let isAnimating = false;
+        let animationId = null;
+
+        // Initialize the app
+        window.onload = function() {
+            updateDisplay();
+            drawLogo();
+            
+            // File input for background image
+            document.getElementById("bgImageInput").addEventListener("change", function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        const img = new Image();
+                        img.onload = function () {
+                            bgImage = img;
+                            drawLogo();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        };
+
+        function updateDisplay() {
+            // Update range displays
+            document.getElementById('fontSizeDisplay').textContent = document.getElementById('fontSize').value + 'px';
+            document.getElementById('shadowDepthDisplay').textContent = document.getElementById('shadowDepth').value + 'px';
+            document.getElementById('strokeWidthDisplay').textContent = document.getElementById('strokeWidth').value + 'px';
+            document.getElementById('moveXDisplay').textContent = document.getElementById('moveX').value + 'px';
+            document.getElementById('moveYDisplay').textContent = document.getElementById('moveY').value + 'px';
+            document.getElementById('rotationDisplay').textContent = document.getElementById('rotation').value + '°';
+            document.getElementById('gradientAngleDisplay').textContent = document.getElementById('gradientAngle').value + '°';
+            document.getElementById('opacityDisplay').textContent = Math.round(document.getElementById('opacity').value * 100) + '%';
+            
+            // Update info panel
+            const canvas = document.getElementById('logoCanvas');
+            document.getElementById('canvasInfo').textContent = canvas.width + ' × ' + canvas.height;
+            document.getElementById('fontInfo').textContent = document.getElementById('fontSelect').value;
+            document.getElementById('sizeInfo').textContent = document.getElementById('fontSize').value + 'px';
+            document.getElementById('charCount').textContent = document.getElementById('nameInput').value.length;
+        }
+
+        function toggleColorMode() {
+            const colorType = document.getElementById('colorType').value;
+            const solidSection = document.getElementById('solidColorSection');
+            const gradientSection = document.getElementById('gradientColorSection');
+            
+            if (colorType === 'gradient') {
+                solidSection.classList.add('hidden');
+                gradientSection.classList.remove('hidden');
+            } else {
+                solidSection.classList.remove('hidden');
+                gradientSection.classList.add('hidden');
+            }
+        }
+
+        function toggleBgMode() {
+            const bgType = document.getElementById('bgType').value;
+            const colorSection = document.getElementById('bgColorSection');
+            const gradientSection = document.getElementById('bgGradientSection');
+            const imageSection = document.getElementById('bgImageSection');
+            
+            // Hide all sections
+            colorSection.classList.add('hidden');
+            gradientSection.classList.add('hidden');
+            imageSection.classList.add('hidden');
+            
+            // Show appropriate section
+            if (bgType === 'color') {
+                colorSection.classList.remove('hidden');
+            } else if (bgType === 'gradient') {
+                gradientSection.classList.remove('hidden');
+            } else if (bgType === 'image') {
+                imageSection.classList.remove('hidden');
+            }
+        }
+
+        function setCanvasSize() {
+            const preset = document.getElementById('canvasPreset').value;
+            const customSection = document.getElementById('customSizeSection');
+            
+            if (preset === 'custom') {
+                customSection.classList.remove('hidden');
+                return;
+            } else {
+                customSection.classList.add('hidden');
+            }
+            
+            const [width, height] = preset.split('x').map(Number);
+            const canvas = document.getElementById('logoCanvas');
+            canvas.width = width;
+            canvas.height = height;
+            
+            updateDisplay();
+            drawLogo();
+        }
+
+        function updateCanvasSize() {
+            const canvas = document.getElementById('logoCanvas');
+            canvas.width = parseInt(document.getElementById('canvasWidth').value);
+            canvas.height = parseInt(document.getElementById('canvasHeight').value);
+            
+            updateDisplay();
+            drawLogo();
+        }
+
+        function setColor(color) {
+            document.getElementById('textColor').value = color;
+            drawLogo();
+        }
+
+        function drawLogo() {
+            if (isAnimating) return;
+            
+            const canvas = document.getElementById("logoCanvas");
+            const ctx = canvas.getContext("2d");
+
+            const name = document.getElementById("nameInput").value || "شعار";
+            const font = document.getElementById("fontSelect").value;
+            const fontWeight = document.getElementById("fontWeight").value;
+            const fontSize = parseInt(document.getElementById("fontSize").value);
+            const colorType = document.getElementById("colorType").value;
+            const textColor = document.getElementById("textColor").value;
+            const gradientColor1 = document.getElementById("gradientColor1").value;
+            const gradientColor2 = document.getElementById("gradientColor2").value;
+            const gradientAngle = parseInt(document.getElementById("gradientAngle").value);
+            const enableShadow = document.getElementById("enableShadow").checked;
+            const shadowDepth = parseInt(document.getElementById("shadowDepth").value);
+            const shadowColor = document.getElementById("shadowColor").value;
+            const enableStroke = document.getElementById("enableStroke").checked;
+            const strokeWidth = parseInt(document.getElementById("strokeWidth").value);
+            const strokeColor = document.getElementById("strokeColor").value;
+            const moveX = parseInt(document.getElementById("moveX").value);
+            const moveY = parseInt(document.getElementById("moveY").value);
+            const rotation = parseInt(document.getElementById("rotation").value);
+            const opacity = parseFloat(document.getElementById("opacity").value);
+            const bgType = document.getElementById("bgType").value;
+            const bgColor = document.getElementById("bgColor").value;
+            const bgGradientColor1 = document.getElementById("bgGradientColor1").value;
+            const bgGradientColor2 = document.getElementById("bgGradientColor2").value;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background
+            if (bgType === 'transparent') {
+                // Keep transparent
+            } else if (bgType === 'image' && bgImage) {
+                ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+            } else if (bgType === 'gradient') {
+                const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                bgGradient.addColorStop(0, bgGradientColor1);
+                bgGradient.addColorStop(1, bgGradientColor2);
+                ctx.fillStyle = bgGradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else {
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // Setup text properties
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.font = `${fontWeight} ${fontSize}px '${font}'`;
+            ctx.globalAlpha = opacity;
+
+            const x = canvas.width / 2 + moveX;
+            const y = canvas.height / 2 + moveY;
+
+            // Apply rotation
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate((rotation * Math.PI) / 180);
+
+            // Draw shadow
+            if (enableShadow && shadowDepth > 0) {
+                for (let i = shadowDepth; i > 0; i--) {
+                    ctx.fillStyle = shadowColor;
+                    ctx.fillText(name, i, i);
+                }
+            }
+
+            // Draw stroke
+            if (enableStroke && strokeWidth > 0) {
+                ctx.lineWidth = strokeWidth;
+                ctx.strokeStyle = strokeColor;
+                ctx.strokeText(name, 0, 0);
+            }
+
+            // Draw main text
+            if (colorType === 'gradient') {
+                const angleRad = (gradientAngle * Math.PI) / 180;
+                const gradient = ctx.createLinearGradient(
+                    -fontSize * Math.cos(angleRad),
+                    -fontSize * Math.sin(angleRad),
+                    fontSize * Math.cos(angleRad),
+                    fontSize * Math.sin(angleRad)
+                );
+                gradient.addColorStop(0, gradientColor1);
+                gradient.addColorStop(1, gradientColor2);
+                ctx.fillStyle = gradient;
+            } else {
+                ctx.fillStyle = textColor;
+            }
+            
+            ctx.fillText(name, 0, 0);
+            ctx.restore();
+            ctx.globalAlpha = 1;
+
+            updateDisplay();
+        }
+
+        function applyTemplate(template) {
+            // Remove active class from all templates
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Add active class to clicked template
+            event.target.closest('.template-card').classList.add('active');
+            
+            switch(template) {
+                case 'modern':
+                    document.getElementById('fontSelect').value = 'Cairo';
+                    document.getElementById('colorType').value = 'gradient';
+                    document.getElementById('gradientColor1').value = '#6366f1';
+                    document.getElementById('gradientColor2').value = '#8b5cf6';
+                    document.getElementById('fontSize').value = '80';
+                    document.getElementById('enableShadow').checked = true;
+                    document.getElementById('shadowDepth').value = '5';
+                    break;
+                case 'classic':
+                    document.getElementById('fontSelect').value = 'Amiri';
+                    document.getElementById('colorType').value = 'solid';
+                    document.getElementById('textColor').value = '#f59e0b';
+                    document.getElementById('fontSize').value = '70';
+                    document.getElementById('enableStroke').checked = true;
+                    document.getElementById('strokeWidth').value = '2';
+                    break;
+                case 'minimal':
+                    document.getElementById('fontSelect').value = 'Tajawal';
+                    document.getElementById('colorType').value = 'solid';
+                    document.getElementById('textColor').value = '#ffffff';
+                    document.getElementById('fontSize').value = '60';
+                    document.getElementById('enableShadow').checked = false;
+                    document.getElementById('enableStroke').checked = false;
+                    break;
+                case 'gradient':
+                    document.getElementById('fontSelect').value = 'Reem Kufi';
+                    document.getElementById('colorType').value = 'gradient';
+                    document.getElementById('gradientColor1').value = '#ef4444';
+                    document.getElementById('gradientColor2').value = '#f59e0b';
+                    document.getElementById('gradientAngle').value = '90';
+                    document.getElementById('fontSize').value = '75';
+                    break;
+            }
+            
+            toggleColorMode();
+            updateDisplay();
+            drawLogo();
+        }
+
+        function randomizeColors() {
+            const colors = ['#ef4444', '#f59e0b', '#10b981', '#06b6d4', '#6366f1', '#8b5cf6', '#ec4899'];
+            const randomColor1 = colors[Math.floor(Math.random() * colors.length)];
+            const randomColor2 = colors[Math.floor(Math.random() * colors.length)];
+            
+            if (document.getElementById('colorType').value === 'gradient') {
+                document.getElementById('gradientColor1').value = randomColor1;
+                document.getElementById('gradientColor2').value = randomColor2;
+            } else {
+                document.getElementById('textColor').value = randomColor1;
+            }
+            
+            drawLogo();
+        }
+
+        function applyRandomFont() {
+            const fonts = ['Cairo', 'Amiri', 'Tajawal', 'Reem Kufi', 'Scheherazade New', 'Lalezar', 'Markazi Text'];
+            const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+            document.getElementById('fontSelect').value = randomFont;
+            drawLogo();
+        }
+
+        function animatePreview() {
+            if (isAnimating) {
+                stopAnimation();
+                return;
+            }
+            
+            isAnimating = true;
+            const button = event.target;
+            button.innerHTML = '<i class="fas fa-stop mr-2"></i>إيقاف الحركة';
+            button.classList.add('animate-pulse-slow');
+            
+            let angle = 0;
+            const originalRotation = document.getElementById('rotation').value;
+            
+            function animate() {
+                if (!isAnimating) return;
+                
+                angle += 2;
+                document.getElementById('rotation').value = angle % 360;
+                drawLogo();
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Stop after 5 seconds
+            setTimeout(() => {
+                stopAnimation();
+                document.getElementById('rotation').value = originalRotation;
+                drawLogo();
+            }, 5000);
+        }
+
+        function stopAnimation() {
+            isAnimating = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            const button = document.querySelector('[onclick="animatePreview()"]');
+            button.innerHTML = '<i class="fas fa-play mr-2"></i>معاينة متحركة';
+            button.classList.remove('animate-pulse-slow');
+        }
+
+        function downloadCanvas(format = 'png') {
+            const canvas = document.getElementById("logoCanvas");
+            const link = document.createElement("a");
+            const filename = `logo_${Date.now()}`;
+            
+            if (format === 'svg') {
+                // Create SVG version (simplified)
+                const svgData = createSVG();
+                const blob = new Blob([svgData], { type: 'image/svg+xml' });
+                link.href = URL.createObjectURL(blob);
+                link.download = filename + '.svg';
+            } else {
+                const mimeType = format === 'jpg' ? 'image/jpeg' : 'image/png';
+                link.href = canvas.toDataURL(mimeType, 0.9);
+                link.download = filename + '.' + format;
+            }
+            
+            link.click();
+        }
+
+        function createSVG() {
+            const canvas = document.getElementById("logoCanvas");
+            const name = document.getElementById("nameInput").value || "شعار";
+            const font = document.getElementById("fontSelect").value;
+            const fontSize = document.getElementById("fontSize").value;
+            const textColor = document.getElementById("textColor").value;
+            
+            return `
+                <svg width="${canvas.width}" height="${canvas.height}" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="${document.getElementById('bgColor').value}"/>
+                    <text x="50%" y="50%" font-family="${font}" font-size="${fontSize}" 
+                          fill="${textColor}" text-anchor="middle" dominant-baseline="middle">
+                        ${name}
+                    </text>
+                </svg>
+            `;
+        }
+
+        function copyToClipboard() {
+            const canvas = document.getElementById("logoCanvas");
+            canvas.toBlob(function(blob) {
+                const item = new ClipboardItem({ "image/png": blob });
+                navigator.clipboard.write([item]).then(() => {
+                    showNotification('تم نسخ الشعار للحافظة!', 'success');
+                }).catch(() => {
+                    showNotification('فشل في النسخ', 'error');
+                });
+            });
+        }
+
+        function generateQRCode() {
+            const text = document.getElementById("nameInput").value || "شعار";
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(text)}`;
+            
+            const img = new Image();
+            img.onload = function() {
+                bgImage = img;
+                document.getElementById('bgType').value = 'image';
+                toggleBgMode();
+                drawLogo();
+                showNotification('تم إنشاء QR Code كخلفية!', 'success');
+            };
+            img.src = qrUrl;
+        }
+
+        function saveProject() {
+            const projectData = {
+                nameInput: document.getElementById('nameInput').value,
+                fontSelect: document.getElementById('fontSelect').value,
+                fontSize: document.getElementById('fontSize').value,
+                colorType: document.getElementById('colorType').value,
+                textColor: document.getElementById('textColor').value,
+                gradientColor1: document.getElementById('gradientColor1').value,
+                gradientColor2: document.getElementById('gradientColor2').value,
+                gradientAngle: document.getElementById('gradientAngle').value,
+                enableShadow: document.getElementById('enableShadow').checked,
+                shadowDepth: document.getElementById('shadowDepth').value,
+                shadowColor: document.getElementById('shadowColor').value,
+                enableStroke: document.getElementById('enableStroke').checked,
+                strokeWidth: document.getElementById('strokeWidth').value,
+                strokeColor: document.getElementById('strokeColor').value,
+                moveX: document.getElementById('moveX').value,
+                moveY: document.getElementById('moveY').value,
+                rotation: document.getElementById('rotation').value,
+                opacity: document.getElementById('opacity').value,
+                bgType: document.getElementById('bgType').value,
+                bgColor: document.getElementById('bgColor').value,
+                canvasWidth: document.getElementById('logoCanvas').width,
+                canvasHeight: document.getElementById('logoCanvas').height
+            };
+            
+            const blob = new Blob([JSON.stringify(projectData, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `logo_project_${Date.now()}.json`;
+            link.click();
+            
+            showNotification('تم حفظ المشروع!', 'success');
+        }
+
+        function loadProject() {
+            document.getElementById('projectFileInput').click();
+        }
+
+        function handleProjectLoad(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const projectData = JSON.parse(e.target.result);
+                    
+                    // Apply all settings
+                    Object.keys(projectData).forEach(key => {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            if (element.type === 'checkbox') {
+                                element.checked = projectData[key];
+                            } else if (key === 'canvasWidth' || key === 'canvasHeight') {
+                                // Handle canvas size separately
+                                const canvas = document.getElementById('logoCanvas');
+                                if (key === 'canvasWidth') canvas.width = projectData[key];
+                                if (key === 'canvasHeight') canvas.height = projectData[key];
+                            } else {
+                                element.value = projectData[key];
+                            }
+                        }
+                    });
+                    
+                    toggleColorMode();
+                    toggleBgMode();
+                    updateDisplay();
+                    drawLogo();
+                    
+                    showNotification('تم تحميل المشروع بنجاح!', 'success');
+                } catch (error) {
+                    showNotification('خطأ في تحميل المشروع', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetAll() {
+            // Reset all inputs to default values
+            document.getElementById('nameInput').value = 'شعار احترافي';
+            document.getElementById('fontSelect').value = 'Cairo';
+            document.getElementById('fontSize').value = '70';
+            document.getElementById('colorType').value = 'solid';
+            document.getElementById('textColor').value = '#ffffff';
+            document.getElementById('enableShadow').checked = true;
+            document.getElementById('shadowDepth').value = '8';
+            document.getElementById('shadowColor').value = '#000000';
+            document.getElementById('enableStroke').checked = false;
+            document.getElementById('strokeWidth').value = '3';
+            document.getElementById('strokeColor').value = '#000000';
+            document.getElementById('moveX').value = '0';
+            document.getElementById('moveY').value = '0';
+            document.getElementById('rotation').value = '0';
+            document.getElementById('opacity').value = '1';
+            document.getElementById('bgType').value = 'color';
+            document.getElementById('bgColor').value = '#1a1a1a';
+            
+            // Reset canvas size
+            const canvas = document.getElementById('logoCanvas');
+            canvas.width = 800;
+            canvas.height = 400;
+            document.getElementById('canvasPreset').value = '800x400';
+            
+            // Clear background image
+            bgImage = null;
+            
+            // Reset UI states
+            toggleColorMode();
+            toggleBgMode();
+            updateDisplay();
+            drawLogo();
+            
+            showNotification('تم إعادة تعيين جميع الإعدادات!', 'info');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full`;
+            
+            const colors = {
+                success: 'bg-green-600 text-white',
+                error: 'bg-red-600 text-white',
+                info: 'bg-blue-600 text-white',
+                warning: 'bg-yellow-600 text-white'
+            };
+            
+            notification.className += ` ${colors[type]}`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'times' : 'info'} mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Enable stroke settings when checkbox is checked
+        document.getElementById('enableStroke').addEventListener('change', function() {
+            const strokeSettings = document.getElementById('strokeSettings');
+            if (this.checked) {
+                strokeSettings.classList.remove('hidden');
+            } else {
+                strokeSettings.classList.add('hidden');
+            }
+        });
+
+        // Update tips periodically
+        function updateTips() {
+            const tips = [
+                '💡 استخدم الخطوط العربية للحصول على شعار أكثر أصالة',
+                '🎨 جرب التدرجات اللونية لمظهر عصري',
+                '✨ أضف ظلال خفيفة لإعطاء عمق للنص',
+                '📱 تأكد من وضوح الشعار في الأحجام المختلفة',
+                '🔄 استخدم الدوران لإنشاء تأثيرات بصرية مثيرة',
+                '🌈 جرب الألوان العشوائية للحصول على أفكار جديدة',
+                '💾 احفظ مشروعك لاستكماله لاحقاً',
+                '📊 استخدم QR Code لربط الشعار بموقعك'
+            ];
+            
+            const tipsContainer = document.getElementById('tips');
+            let currentTip = 0;
+            
+            setInterval(() => {
+                const tipElements = tipsContainer.children;
+                if (tipElements.length > 0) {
+                    tipElements[currentTip].style.opacity = '0.5';
+                    currentTip = (currentTip + 1) % tipElements.length;
+                    setTimeout(() => {
+                        tipElements[currentTip].style.opacity = '1';
+                    }, 500);
+                }
+            }, 5000);
+        }
+
+        // Initialize tips rotation
+        setTimeout(updateTips, 2000);
+    </script>
+</body>
+</html>
